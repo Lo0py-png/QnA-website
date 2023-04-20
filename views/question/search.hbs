@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Search Questions</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+  <div class="container mt-3">
+    <h1>Search Questions</h1>
+    <form id="search-form" action="/questions/search" method="GET">
+      <div class="form-group">
+        <label for="tag">Search by tag:</label>
+        <input type="text" class="form-control" id="tag" name="tag" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Search</button>
+      <a href="/" class="btn btn-secondary">Go to Home</a>
+    </form>
+    <hr>
+    {{#if questions}}
+    <h2>Search Results:</h2>
+    {{> _questions-list questions=questions}}
+    {{else}}
+    {{#if searchPerformed}}
+    <p>No questions found with the given tag.</p>
+    {{/if}}
+    {{/if}}
+  </div>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

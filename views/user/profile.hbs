@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: silver;
+        }
+
+        .profile-picture {
+            width: 150px;
+            /* Set desired width */
+            height: 150px;
+            /* Set desired height */
+            object-fit: cover;
+            /* Maintain the aspect ratio of the image */
+            border-radius: 50%;
+            /* Optional: make the image a circle */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="my-4">User Profile:</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Username:</h2>
+                <h3>{{username}}</h3>
+            </div>
+            <div class="col-md-4">
+                <h2>Email:</h2>
+                <h3>{{email}}</h3>
+            </div>
+            <div class="col-md-4">
+                <h2>Profile Picture:</h2>
+                {{#if profilePicture}}
+                <img src="{{profilePicture}}" alt="" class="profile-picture">
+                {{else}}
+                <img src="/images/default.jpg" alt="" class="profile-picture">
+                {{/if}}
+
+                <form action="/users/uploadProfilePicture" method="post" enctype="multipart/form-data" class="mt-3">
+                    <input type="file" name="profilePicture" id="profilePicture" accept="image/*">
+                    <button type="submit" class="btn btn-primary mt-2">Upload Profile Picture</button>
+                </form>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Questions:</h2>
+                <h3>{{questionsCount}}</h3>
+            </div>
+            <div class="col-md-4">
+                <h2>Answers:</h2>
+                <h3>{{answersCount}}</h3>
+            </div>
+            <div class="col-md-4">
+                <h2>Accepted Answers:</h2>
+                <h3>{{selectedAnswersCount}}</h3>
+            </div>
+
+        </div>
+        <hr>
+        <a class="btn btn-primary mr-2" href="/">Landing Page</a>
+        <a class="btn btn-danger" href="logout">Logout</a>
+    </div>
+</body>
+
+</html>
