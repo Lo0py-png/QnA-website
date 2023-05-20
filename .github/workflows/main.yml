@@ -24,6 +24,5 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          dockerfille: ./Dockerfile
           push: true
           tags: zanderanja/outsiders:${{ github.sha }}
