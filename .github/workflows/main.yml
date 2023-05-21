@@ -38,5 +38,6 @@ jobs:
         env:
           webhook_type: 'json'
           webhook_url: ${{ secrets.WEBHOOK_URL }}
+          webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
           webhook_payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
           webhook_headers: '{"Content-Type": "application/json"}'
